@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}
+{% block content %}
+
+    {% for session in sessions %}
+    <div class="row mx-1 my-4">
+        <div class="col-sm-4">
+            <img src="{{ session.movie.poster.url }}">
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <h1>{{ session.movie.title }}</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p><b>Дата: </b>{{ session.date_time }}</p>
+                </div>
+                <div class="col-sm-6">
+                    <p><b>Зал: </b>{{ session.hall.number }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary btn-lg" href="/session?session_id={{ session.id }}">Забронировать</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

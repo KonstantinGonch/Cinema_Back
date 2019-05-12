@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', views.index, name="index"),
+    path("movie/", views.movie_view, name="movie"),
+    path("contact/", views.contact, name="contact"),
+    path("soon/", views.movies_soon, name="movies_soon"),
+    path("today/", views.movies_today, name="movies_today"),
+    path("session/", views.session_view, name="session"),
+    path("makebook/", views.make_book, name="make_book"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

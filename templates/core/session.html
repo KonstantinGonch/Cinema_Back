@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="my-2">{{ session.movie.title }}</h1>
+    </div>
+    <div class="row">
+        <img class="my-2" src="{{ session.movie.poster.url }}">
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <p>Зал: {{ session.hall.number }}</p>
+        </div>
+        <div class="col-lg-6">
+            <p>Дата: {{ session.date_time }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <p>Место</p>
+        <select>
+            {% for seat in seats %}
+                <option>{{ seat }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="row">
+        <p>Стоимость : {{ session.price }}</p>
+    </div>
+    <div class="row">
+        <a class="btn btn-lg btn-primary" href="/makebook?session_id={{ session.id }}">Забронировать</a>
+    </div>
+{% endblock %}

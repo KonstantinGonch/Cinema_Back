@@ -11,7 +11,7 @@ class Movie(models.Model):
     actors = models.TextField(verbose_name="Актеры")
     age_rate = models.IntegerField(verbose_name="Возрастной рейтинг")
     release_date = models.DateField(verbose_name="Дата премьеры")
-    poster = models.ImageField(verbose_name="Постер")
+    poster = models.ImageField(verbose_name="Постер", upload_to="media/")
 
     def __str__(self):
         return self.title

@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+
+    {% for movie in movies %}
+    <div class="row mx-1 my-4">
+        <div class="col-sm-4">
+            <img width="200" height="250" src="{{ movie.poster.url }}">
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <h1>{{ movie.title }}</h1>
+            </div>
+            <div class="row">
+                <p>{{ movie.description|truncatechars:200 }}</p>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary btn-lg" href="/movie?movie_id={{ movie.id }}">О фильме</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
